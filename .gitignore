@@ -1,0 +1,4 @@
+.workbuddy/
+_v_*
+_test*
+*.log
