@@ -112,6 +112,12 @@ a{color:inherit;text-decoration:none}
 .btn.cyan{background:var(--cyan)}
 .btn.green{background:var(--green)}
 .btn.navy{background:var(--ink);color:#fff}
+.btn-mini{
+  display:inline-block;background:var(--paper);color:var(--ink);border:2px solid var(--ink);border-radius:999px;
+  padding:.4em 1.1em;font-size:14px;font-weight:700;letter-spacing:.02em;
+  box-shadow:0 3px 0 rgba(106,74,120,.25);cursor:none;opacity:.85;transition:.15s;
+}
+.btn-mini:hover{transform:translateY(-2px);box-shadow:0 5px 0 rgba(106,74,120,.28);opacity:1;background:var(--pink-soft)}
 .btn.sm{font-size:16px;padding:.45em 1.1em;box-shadow:0 5px 0 rgba(106,74,120,.3)}
 
 /* ---------- 顶部悬浮导航 ---------- */
@@ -143,9 +149,8 @@ a{color:inherit;text-decoration:none}
 #nav a.navlink.pop{animation:navPop .5s cubic-bezier(.2,2.4,.4,1)}
 @keyframes navPop{0%{transform:scale(1)}45%{transform:scale(1.22) rotate(-4deg)}100%{transform:scale(1)}}
 #nav .playbtn{
-  background:var(--yellow);font-family:var(--font-display);font-size:16px;padding:6px 14px;
-  border-radius:999px;border:2px solid var(--ink);margin-left:4px;cursor:none;
-  animation:navWiggle 5s ease-in-out infinite;transform-origin:60% 90%;
+  background:var(--paper);font-family:var(--font-body);font-weight:700;font-size:13px;padding:4px 11px;
+  border-radius:999px;border:2px solid var(--ink);margin-left:4px;cursor:none;opacity:.9;
 }
 #nav .playbtn:hover{animation:navShake .5s ease-in-out infinite}
 @keyframes navWiggle{0%,86%,100%{transform:rotate(0)}90%{transform:rotate(-6deg)}94%{transform:rotate(5deg)}97%{transform:rotate(-2deg)}}
@@ -768,13 +773,17 @@ footer .hl{color:var(--yellow)}
 }
 .anon-toggle.on{background:var(--magenta);color:#fff;box-shadow:3px 3px 0 rgba(106,74,120,.3)}
 .gb-submit{
-  border:var(--border);border-radius:999px;padding:10px 18px;background:var(--ink);color:#fff;
-  font-family:var(--font-display);font-size:18px;cursor:none;box-shadow:5px 5px 0 rgba(106,74,120,.3);
+  border:var(--border);border-radius:999px;padding:8px 16px;background:var(--ink);color:#fff;
+  font-family:var(--font-display);font-size:15px;cursor:none;box-shadow:4px 4px 0 rgba(106,74,120,.3);
   transition:.15s cubic-bezier(.2,2.2,.4,1);
 }
 .gb-submit:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 rgba(106,74,120,.3)}
 .gb-submit:active{transform:translate(2px,2px);box-shadow:2px 2px 0 rgba(106,74,120,.3)}
 .gb-hint{font-family:var(--font-hand);font-size:14px;color:var(--navy-deep);min-height:18px}
+.gb-empty{
+  border:2.5px dashed rgba(106,74,120,.4);border-radius:14px;padding:36px 20px;text-align:center;
+  font-family:var(--font-hand);font-size:15px;color:var(--navy-deep);opacity:.65;
+}
 .wall{display:flex;flex-direction:column;gap:12px;max-height:430px;overflow:auto;padding:6px 6px 6px 2px}
 .gb-note{
   position:relative;border:2px solid var(--ink);border-radius:14px;padding:12px 14px;background:#fffdf7;
@@ -899,7 +908,7 @@ footer .hl{color:var(--yellow)}
   <a class="navlink" href="#campus">校园</a>
   <a class="navlink" href="#honors">荣誉</a>
   <a class="navlink" href="#summary">总结</a>
-  <button class="playbtn" id="playNav">留句话 ✎</button>
+  <button class="playbtn" id="playNav">✉ 留言</button>
 </nav>
 
 <!-- 证书放大镜 -->
@@ -984,7 +993,7 @@ footer .hl{color:var(--yellow)}
         </div>
         <div class="cover-actions reveal d3">
           <a class="btn yellow" href="#projects">看我的项目 →</a>
-          <button class="btn navy" id="playHero">给我留句话 ✎</button>
+          <button class="btn-mini" id="playHero">✉ 留言小信箱</button>
           <a class="btn sm" href="./resume.pdf" target="_blank">下载简历 PDF</a>
         </div>
       </div>
@@ -1388,21 +1397,21 @@ footer .hl{color:var(--yellow)}
           <a class="btn yellow" href="mailto:1485623360@qq.com">1485623360@qq.com</a>
           <a class="btn cyan" href="tel:13144328520">13144328520</a>
           <a class="btn navy" href="https://github.com/wangxinyao2727" target="_blank">GitHub</a>
-          <button class="btn green" id="playFoot">✎ 给我留句话</button>
+          <button class="btn-mini" id="playFoot">✉ 留言小信箱</button>
         </div>
       </div>
     </div>
   </section>
 </main>
 
-<footer>made with <span class="hl">♥</span> & 留言板 —— 王馨瑶 · 2026</footer>
+<footer>made with <span class="hl">♥</span> & 留言小信箱 —— 王馨瑶 · 2026</footer>
 
 <!-- ========== 留言板弹层 ========== -->
 <div id="gameModal">
   <div class="gm-card">
     <button class="gm-close" id="gmClose">✕</button>
-    <h3>LEAVE A NOTE</h3>
-    <p class="gm-sub">写一句想对我说的话——寄语、建议、吐槽、唠嗑，统统接收</p>
+    <h3>留言小信箱</h3>
+    <p class="gm-sub">写点想说的，投进信箱就好</p>
     <div class="gm-grid">
       <form class="note-form" id="noteForm">
         <div>
@@ -1415,7 +1424,7 @@ footer .hl{color:var(--yellow)}
         </div>
         <div>
           <label>想说的话</label>
-          <textarea id="noteText" maxlength="200" placeholder="比如：网站很可爱！小人还会跳……" required></textarea>
+          <textarea id="noteText" maxlength="200" placeholder="想说的就写在这里…" required></textarea>
         </div>
         <div>
           <label>怎么署名</label>
@@ -1424,8 +1433,8 @@ footer .hl{color:var(--yellow)}
             <button type="button" class="anon-toggle" id="anonToggle">匿名</button>
           </div>
         </div>
-        <button type="submit" class="gb-submit">贴到留言墙</button>
-        <div class="gb-hint" id="gbHint">留言只保存在你的浏览器里，馨瑶上线看到后会认真回复～</div>
+        <button type="submit" class="gb-submit">投进信箱</button>
+        <div class="gb-hint" id="gbHint">留言只保存在你的浏览器里</div>
       </form>
       <div class="wall" id="wall"></div>
     </div>
@@ -1587,32 +1596,27 @@ const noteName = document.getElementById('noteName');
 const anonToggle = document.getElementById('anonToggle');
 const gbHint = document.getElementById('gbHint');
 const TAG_NAME = { wish: '寄语', advice: '建议', chat: '唠嗑' };
-const ANON_NAMES = ['一只小熊', '月月亮', '彩虹糖', '云端访客', '小星星', '隔壁的猫', '路过的鱼'];
-const GB_KEY = 'xinyao_guestbook_v1';
-const SEED = [
-  { tag: 'wish',   name: '站长',     text: '留言板的第一块砖由我来砸——快来写下你想对我说的第一句话吧！', date: '2026-11-16', seed: true },
-  { tag: 'advice', name: '神秘访客', text: '首页的小人会跳舞，能不能再变出一个新动作？', date: '2026-11-16', seed: true },
-  { tag: 'chat',   name: '小星星',   text: '本来只想逛一下，结果把整站都看完了，好可爱！', date: '2026-11-16', seed: true }
-];
+const GB_KEY = 'xinyao_guestbook_v2';
 let curTag = 'wish';
 let anon = false;
 
 function loadNotes() {
-  try { const arr = JSON.parse(localStorage.getItem(GB_KEY)); return Array.isArray(arr) ? arr : SEED.slice(); }
-  catch (e) { return SEED.slice(); }
+  try { const arr = JSON.parse(localStorage.getItem(GB_KEY)); return Array.isArray(arr) ? arr : []; }
+  catch (e) { return []; }
 }
 function saveNotes(notes) { try { localStorage.setItem(GB_KEY, JSON.stringify(notes)); } catch (e) {} }
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 function renderWall() {
   const notes = loadNotes();
-  wall.innerHTML = notes.map((n, i) => `
+  wall.innerHTML = notes.length ? notes.map((n, i) => `
     <div class="gb-note t-${esc(n.tag)}">
       <div class="n-top"><span class="n-tag">${TAG_NAME[n.tag] || TAG_NAME.chat}</span><span class="n-name">—— ${esc(n.name)}</span></div>
       <div class="n-text">${esc(n.text)}</div>
       <div class="n-date">${esc(n.date)}</div>
-      ${n.seed ? '' : `<button class="n-del" data-i="${i}" title="撕下这张便签">✕</button>`}
-    </div>`).reverse().join('');
+      <button class="n-del" data-i="${i}" title="撕下这张便签">✕</button>
+    </div>`).reverse().join('')
+    : '<div class="gb-empty">信箱空空的 · 等第一封来信</div>';
   bindCursor(wall);
 }
 
@@ -1638,20 +1642,20 @@ anonToggle.addEventListener('click', () => {
   anonToggle.classList.toggle('on', anon);
   anonToggle.textContent = anon ? '匿名 · 开' : '匿名';
   noteName.disabled = anon;
-  noteName.placeholder = anon ? '系统会送你一个神秘代号…' : '写下你的名字或称呼…';
+  noteName.placeholder = anon ? '将显示为「匿名」' : '写下你的名字或称呼…';
 });
 
 noteForm.addEventListener('submit', e => {
   e.preventDefault();
   const text = noteText.value.trim();
-  if (!text) { gbHint.textContent = '别空着呀，至少写一个字'; return; }
-  const name = anon ? ANON_NAMES[(Math.random() * ANON_NAMES.length) | 0] : (noteName.value.trim() || '匿名朋友');
+  if (!text) { gbHint.textContent = '内容还不能为空'; return; }
+  const name = anon ? '匿名' : (noteName.value.trim() || '匿名');
   const notes = loadNotes();
   notes.push({ tag: curTag, name, text, date: new Date().toISOString().slice(0, 10) });
   saveNotes(notes);
   renderWall();
   noteText.value = ''; noteName.value = '';
-  gbHint.textContent = `收到，${name}！你的便签已贴上留言墙`;
+  gbHint.textContent = '已投进小信箱';
   burst(window.innerWidth / 2, window.innerHeight / 2, 70);
 });
 renderWall();
@@ -1962,7 +1966,7 @@ const MINI_TALK = {
   internship: ['上班第一天就占领了咖啡机','改需求？没事，我还能改','实习生小瑶，随时待命！','这个需求，文档写了三遍了'],
   campus: ['主持稿背到凌晨两点也超开心！','把大家聚起来做一件事，很爽的','下一个活动，你来不来？'],
   honors: ['这奖杯举起来……有点重诶','下一个目标：把你「盖个章」','厉害的人也会紧张，但会站上去'],
-  summary: ['看到这里啦？给我留句话再走吧～','谢谢你听我絮叨这么久 💗','悄悄说：点上面的机器人有惊喜']
+  summary: ['看到这里啦，谢谢你听我絮叨这么久','下一站：把喜欢的事做成事业','有缘刷到这里的，都是有耐心的人']
 };
 document.querySelectorAll('.mini').forEach(m => {
   const bubble = m.querySelector('.bubble');
