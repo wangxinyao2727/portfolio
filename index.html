@@ -380,6 +380,9 @@ h2.title .alt{color:var(--magenta);text-shadow:5px 5px 0 #fff,10px 10px 0 rgba(1
 .duty:nth-child(5) .ico{background:var(--pink-soft)}
 .duty h5{font-size:15.5px;font-weight:800;margin-bottom:4px}
 .duty p{font-size:13.6px;line-height:1.8;color:var(--navy-deep)}
+.plan-link{display:inline-block;margin-top:8px;font-size:12.5px;font-weight:700;color:var(--magenta);
+  border-bottom:2px dotted rgba(240,46,224,.5);padding-bottom:1px;transition:.2s}
+.plan-link:hover{color:var(--ink);border-bottom-color:var(--ink);transform:translateX(2px)}
 
 /* ---------- 区域：校园 ---------- */
 .roles{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -1117,7 +1120,8 @@ footer .hl{color:var(--yellow)}
         <div class="duty">
           <div>
             <h5>内容合规自动化系统（核心项目）</h5>
-            <p>独立设计方案：多平台（小红书 / 公众号 / Ins / WordPress）+ 8 类检测维度 + 平台可行性分级与限额风控（含人工审核兜底）；落地「爬取→检测→修改→调度」4 智能体协作系统，WordPress 全链路跑通验证，代码按公司规范脱敏归档。多平台合规排查由人工逐篇约 15 分钟压缩至自动化分钟级，支撑存量内容批量整改。</p>
+            <p>独立设计方案：多平台（小红书 / 公众号 / Ins / WordPress）+ 8 类检测维度 + 平台可行性分级与限额风控（含人工审核兜底）；落地「爬取→检测→修改→调度」4 智能体协作系统，WordPress 全链路跑通验证，代码按公司规范脱敏归档。排查中发现 18 篇存量文章共用同一套推广模板、藏着 7 处固定违规，于是把「逐篇自动修补」改成「改一处模板源码」——一次修复覆盖全部存量与未来文章。人工逐篇约 15 分钟的合规排查压缩至自动化分钟级。</p>
+            <a class="plan-link" href="javascript:void(0)" onclick="openPdf('docs/compliance-plan.pdf','内容合规自动化 · 产品方案（脱敏展示版）')">读完整方案 · 脱敏展示版 ↗</a>
           </div>
         </div>
         <div class="duty">
