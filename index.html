@@ -748,7 +748,7 @@ footer .hl{color:var(--yellow)}
 }
 .gm-card h3{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);color:#fff;text-shadow:4px 4px 0 var(--ink);margin-bottom:4px}
 .gm-card .gm-sub{font-family:var(--font-hand);font-size:17px;margin-bottom:16px}
-.gm-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:20px;align-items:start}
+.gm-card .note-form{max-width:520px;margin:0 auto;width:100%}
 .note-form{background:var(--paper);border:var(--border);border-radius:18px;padding:16px;box-shadow:8px 8px 0 rgba(106,74,120,.28);display:flex;flex-direction:column;gap:12px}
 .note-form label{font-family:var(--font-display);font-size:15px;color:var(--ink);display:block;margin-bottom:6px}
 .note-form textarea{
@@ -783,36 +783,8 @@ footer .hl{color:var(--yellow)}
 .gb-submit:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 rgba(106,74,120,.3)}
 .gb-submit:active{transform:translate(2px,2px);box-shadow:2px 2px 0 rgba(106,74,120,.3)}
 .gb-hint{font-family:var(--font-hand);font-size:14px;color:var(--navy-deep);min-height:18px}
-.gb-empty{
-  border:2.5px dashed rgba(106,74,120,.4);border-radius:14px;padding:36px 20px;text-align:center;
-  font-family:var(--font-hand);font-size:15px;color:var(--navy-deep);opacity:.65;
-}
-.wall{display:flex;flex-direction:column;gap:12px;max-height:430px;overflow:auto;padding:6px 6px 6px 2px}
-.gb-note{
-  position:relative;border:2px solid var(--ink);border-radius:14px;padding:12px 14px;background:#fffdf7;
-  box-shadow:6px 6px 0 rgba(106,74,120,.22);transition:transform .18s cubic-bezier(.2,2.2,.4,1);
-}
-.gb-note:nth-child(odd){transform:rotate(-1.2deg)}
-.gb-note:nth-child(even){transform:rotate(1deg)}
-.gb-note:hover{transform:rotate(0) scale(1.02)}
-.gb-note .n-top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.gb-note .n-tag{font-family:var(--font-display);font-size:12px;border:2px solid var(--ink);border-radius:999px;padding:.1em .7em;background:var(--yellow);color:var(--ink)}
-.gb-note.t-advice .n-tag{background:var(--cyan)}
-.gb-note.t-chat .n-tag{background:var(--green)}
-.gb-note .n-name{margin-left:auto;font-family:var(--font-hand);font-size:14px;opacity:.75}
-.gb-note .n-text{font-family:var(--font-hand);font-size:17px;color:var(--ink);line-height:1.45;word-break:break-word}
-.gb-note .n-date{font-size:11px;opacity:.5;margin-top:6px;font-weight:600}
-.gb-note .n-del{
-  position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-radius:50%;
-  border:2px solid var(--ink);background:#fff;font-size:12px;font-weight:800;cursor:none;
-  display:none;align-items:center;justify-content:center;
-}
-.gb-note:hover .n-del{display:flex}
-.gb-note .n-del:hover{background:var(--magenta);color:#fff}
-@media (max-width:720px){
-  .gm-grid{grid-template-columns:1fr}
-  .wall{max-height:300px}
-}
+.gb-mail{color:var(--magenta);font-weight:800;text-decoration:underline;text-underline-offset:2px}
+.gb-submit:disabled{opacity:.6}
 
 /* ---------- 响应式 ---------- */
 @media (max-width:980px){
@@ -1416,32 +1388,29 @@ footer .hl{color:var(--yellow)}
     <button class="gm-close" id="gmClose">✕</button>
     <h3>留言小信箱</h3>
     <p class="gm-sub">写点想说的，投进信箱就好</p>
-    <div class="gm-grid">
-      <form class="note-form" id="noteForm">
-        <div>
-          <label>想说的类型</label>
-          <div class="tag-row" id="tagRow">
-            <button type="button" class="tag-chip active" data-tag="wish">寄语</button>
-            <button type="button" class="tag-chip" data-tag="advice">建议</button>
-            <button type="button" class="tag-chip" data-tag="chat">唠嗑</button>
-          </div>
+    <form class="note-form" id="noteForm">
+      <div>
+        <label>想说的类型</label>
+        <div class="tag-row" id="tagRow">
+          <button type="button" class="tag-chip active" data-tag="wish">寄语</button>
+          <button type="button" class="tag-chip" data-tag="advice">建议</button>
+          <button type="button" class="tag-chip" data-tag="chat">唠嗑</button>
         </div>
-        <div>
-          <label>想说的话</label>
-          <textarea id="noteText" maxlength="200" placeholder="想说的就写在这里…" required></textarea>
+      </div>
+      <div>
+        <label>想说的话</label>
+        <textarea id="noteText" maxlength="200" placeholder="想说的就写在这里…" required></textarea>
+      </div>
+      <div>
+        <label>怎么署名</label>
+        <div class="name-row">
+          <input type="text" id="noteName" maxlength="16" placeholder="写下你的名字或称呼…">
+          <button type="button" class="anon-toggle" id="anonToggle">匿名</button>
         </div>
-        <div>
-          <label>怎么署名</label>
-          <div class="name-row">
-            <input type="text" id="noteName" maxlength="16" placeholder="写下你的名字或称呼…">
-            <button type="button" class="anon-toggle" id="anonToggle">匿名</button>
-          </div>
-        </div>
-        <button type="submit" class="gb-submit">投进信箱</button>
-        <div class="gb-hint" id="gbHint">留言只保存在你的浏览器里</div>
-      </form>
-      <div class="wall" id="wall"></div>
-    </div>
+      </div>
+      <button type="submit" class="gb-submit" id="gbSubmit">投进信箱</button>
+      <div class="gb-hint" id="gbHint">留言私密送达 · 只有我能看到，不会公开</div>
+    </form>
   </div>
 </div>
 
@@ -1591,47 +1560,26 @@ function burst(x, y, n = 60) {
   requestAnimationFrame(loop);
 })();
 
-/* ================= 留言板 ================= */
+/* ================= 留言小信箱（云端直投邮箱） ================= */
 const gameModal = document.getElementById('gameModal');
-const wall = document.getElementById('wall');
 const noteForm = document.getElementById('noteForm');
 const noteText = document.getElementById('noteText');
 const noteName = document.getElementById('noteName');
 const anonToggle = document.getElementById('anonToggle');
 const gbHint = document.getElementById('gbHint');
+const gbSubmit = document.getElementById('gbSubmit');
 const TAG_NAME = { wish: '寄语', advice: '建议', chat: '唠嗑' };
-const GB_KEY = 'xinyao_guestbook_v2';
+const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+const MAIL_TO = '1485623360@qq.com';
 let curTag = 'wish';
 let anon = false;
 
-function loadNotes() {
-  try { const arr = JSON.parse(localStorage.getItem(GB_KEY)); return Array.isArray(arr) ? arr : []; }
-  catch (e) { return []; }
+function mailFallback(name, text) {
+  const sub = encodeURIComponent('小信箱来信 · ' + TAG_NAME[curTag] + ' · ' + name);
+  const body = encodeURIComponent('类型：' + TAG_NAME[curTag] + '\n署名：' + name + '\n\n' + text);
+  const href = 'mailto:' + MAIL_TO + '?subject=' + sub + '&body=' + body;
+  gbHint.innerHTML = '网络没连上 · <a href="' + href + '" class="gb-mail">点这里改用邮件发送 ↗</a>';
 }
-function saveNotes(notes) { try { localStorage.setItem(GB_KEY, JSON.stringify(notes)); } catch (e) {} }
-const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-
-function renderWall() {
-  const notes = loadNotes();
-  wall.innerHTML = notes.length ? notes.map((n, i) => `
-    <div class="gb-note t-${esc(n.tag)}">
-      <div class="n-top"><span class="n-tag">${TAG_NAME[n.tag] || TAG_NAME.chat}</span><span class="n-name">—— ${esc(n.name)}</span></div>
-      <div class="n-text">${esc(n.text)}</div>
-      <div class="n-date">${esc(n.date)}</div>
-      <button class="n-del" data-i="${i}" title="撕下这张便签">✕</button>
-    </div>`).reverse().join('')
-    : '<div class="gb-empty">信箱空空的 · 等第一封来信</div>';
-  bindCursor(wall);
-}
-
-wall.addEventListener('click', e => {
-  const del = e.target.closest('.n-del');
-  if (!del) return;
-  const notes = loadNotes();
-  notes.splice(+del.dataset.i, 1);
-  saveNotes(notes);
-  renderWall();
-});
 
 document.querySelectorAll('.tag-chip').forEach(ch => {
   ch.addEventListener('click', () => {
@@ -1649,20 +1597,45 @@ anonToggle.addEventListener('click', () => {
   noteName.placeholder = anon ? '将显示为「匿名」' : '写下你的名字或称呼…';
 });
 
-noteForm.addEventListener('submit', e => {
+noteForm.addEventListener('submit', async e => {
   e.preventDefault();
   const text = noteText.value.trim();
   if (!text) { gbHint.textContent = '内容还不能为空'; return; }
   const name = anon ? '匿名' : (noteName.value.trim() || '匿名');
-  const notes = loadNotes();
-  notes.push({ tag: curTag, name, text, date: new Date().toISOString().slice(0, 10) });
-  saveNotes(notes);
-  renderWall();
-  noteText.value = ''; noteName.value = '';
-  gbHint.textContent = '已投进小信箱';
-  burst(window.innerWidth / 2, window.innerHeight / 2, 70);
+
+  gbSubmit.disabled = true;
+  const btnText = gbSubmit.textContent;
+  gbSubmit.textContent = '投递中…';
+  gbHint.textContent = '';
+
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: '9f61d0ed-543f-4e1e-83fe-7a6c7103982b',
+        subject: `小信箱来信 · ${TAG_NAME[curTag]} · ${name}`,
+        from_name: '作品集小信箱',
+        name: name,
+        tag: TAG_NAME[curTag],
+        message: text
+      })
+    });
+    const data = await res.json();
+    if (data.success) {
+      noteText.value = ''; noteName.value = '';
+      gbHint.textContent = '已投进小信箱';
+      burst(window.innerWidth / 2, window.innerHeight / 2, 70);
+    } else {
+      mailFallback(name, text);
+    }
+  } catch (err) {
+    mailFallback(name, text);
+  } finally {
+    gbSubmit.disabled = false;
+    gbSubmit.textContent = btnText;
+  }
 });
-renderWall();
 
 /* 打开 / 关闭留言板 */
 function openGame() {
